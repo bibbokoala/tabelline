@@ -1,0 +1,125 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/redmond/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css">
+<style>
+table {
+  border-collapse: collapse;
+}
+table, td, th {
+  border: 1px solid black;
+  text-align: center;
+}
+td{
+  width:50px
+}
+tr{
+  height:50px;
+}
+.btn {
+  background: #d9a234;
+  background-image: -webkit-linear-gradient(top, #d9a234, #b82b2b);
+  background-image: -moz-linear-gradient(top, #d9a234, #b82b2b);
+  background-image: -ms-linear-gradient(top, #d9a234, #b82b2b);
+  background-image: -o-linear-gradient(top, #d9a234, #b82b2b);
+  background-image: linear-gradient(to bottom, #d9a234, #b82b2b);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  text-shadow: 1px 1px 3px #000000;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+.btn:hover {
+  background: #b82b2b;
+  background-image: -webkit-linear-gradient(top, #b82b2b, #d9a234);
+  background-image: -moz-linear-gradient(top, #b82b2b, #d9a234);
+  background-image: -ms-linear-gradient(top, #b82b2b, #d9a234);
+  background-image: -o-linear-gradient(top, #b82b2b, #d9a234);
+  background-image: linear-gradient(to bottom, #b82b2b, #d9a234);
+  text-decoration: none;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+  var i,j,n;
+  var colors = [
+    "",
+    "#FFFFFF",
+    "#FFF0E6",
+    "#FFE0CC",
+    "#FFD1B2",
+    "#FFC299",
+    "#FFB280",
+    "#FFA366",
+    "#FF944D",
+    "#FF8533",
+    "#FF7519",
+    "#FF6600",
+    "#E65C00",
+    "#CC5200",
+  ];
+  /*** vecchia tabella
+  document.write("<table align=center>  ");
+  for(i=1;i<=13;i=1+i)
+  {
+  document.write("<tr bgcolor='" + colors[i] + "'>");
+  for(j=1; j<=13 ; j=j+1)
+  {
+      n=i*j;
+      document.write("<td>"+n);
+      document.write("</td>");
+  }
+    document.write("</tr>");
+  }
+  document.write("</table><br><br>");
+  ****/
+  document.write("<table align=center id='tableID'>  ");
+  for(i=1;i<=13;i=1+i)
+  {
+  document.write("<tr bgcolor='" + colors[i] + "'>");
+  for(j=1; j<=13 ; j=j+1)
+  {
+      n=i*j;
+      document.write("<td>"+ i + "x" + j);
+      document.write("</td>");
+  }
+    document.write("</tr>");
+  }
+  document.write("</table>");
+  var table = document.getElementById("tableID");
+  if (table != null) {
+    for (var i = 0; i < table.rows.length; i++) {
+      for (var j = 0; j < table.rows[i].cells.length; j++)
+        table.rows[i].cells[j].onclick = function () {
+        tableText(this);
+      };
+    }
+  }
+  function tableText(tableCell) {
+    var cell_text = tableCell.innerHTML;
+    var res = cell_text.split("x");
+    var messaggio = "Quanto fa " + res[0] + " x " + res[1] + " ?" ;
+    var esatto = res[0]*res[1];
+    var result = prompt(messaggio);
+    if (result != null) 
+    {
+      if (result==esatto)
+        $(tableCell).css( "background-color", "66FF00" );
+      else
+        $(tableCell).css( "background-color", "FF2200" );
+    }
+    tableCell.innerHTML = esatto;
+  }
+  /***
+  document.write("<a class='btn' id='prova' >PROVA</a>");
+  $( "#prova" ).click(function() {
+    alert( "Handler for .click() called." );
+  });
+  ***/
+</script>
+</head>
+</html>
