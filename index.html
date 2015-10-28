@@ -3,7 +3,11 @@
   <title>
     Tabelline
   </title>
+<link rel="apple-touch-icon" href="./images/logo.png">
 <style>
+body {
+  margin:0 auto; 
+}
 table {
   border-collapse: collapse;
 }
@@ -88,18 +92,21 @@ tr{
   }
   function tableText(tableCell) {
     var cell_text = tableCell.innerHTML;
-    var res = cell_text.split("x");
-    var messaggio = "Quanto fa " + res[0] + " x " + res[1] + " ?" ;
-    var esatto = res[0]*res[1];
-    var result = prompt(messaggio);
-    if (result != null) 
+    if (cell_text.search("x")>0)
     {
-      if (result==esatto)
-        $(tableCell).css( "background-color", "66FF00" );
-      else
-        $(tableCell).css( "background-color", "FF2200" );
+      var res = cell_text.split("x");
+      var messaggio = "Quanto fa " + res[0] + " x " + res[1] + " ?" ;
+      var esatto = res[0]*res[1];
+      var result = prompt(messaggio);
+      if ( (result != null) && (result != '') )
+      {
+        if (result==esatto)
+          $(tableCell).css( "background-color", "66FF00" );
+        else
+          $(tableCell).css( "background-color", "FF2200" );
+        tableCell.innerHTML = esatto;
+      }
     }
-    tableCell.innerHTML = esatto;
   }
 </script>
 </head>
