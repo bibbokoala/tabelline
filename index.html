@@ -112,8 +112,7 @@ tr{
   $(document).ready(function() {
     $("#restart").click(function(){
       console.log("restart");
-      var r = confirm("Vuoi riavviare l' applicazione?");
-      if (confirm("Vuoi chiudere l'applicazione?")) {
+      if (confirm("Vuoi riavviare l' applicazione?")) {
         window.location.reload();
       }
     });
