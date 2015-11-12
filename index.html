@@ -71,6 +71,8 @@ tr{
   }
     document.write("</tr>");
   }
+  document.write("<tr bgcolor='"+colors[numbers-6]+"'><td colspan="+numbers+"><p id='restart' >Riavvia</p></td></tr>");
+  document.write("<tr bgcolor='"+colors[numbers-1]+"'><td colspan="+numbers+"><p id='close' >Chiudi</p></td></tr>");
   document.write("</table>");
   var table = document.getElementById("tableID");
   if (table != null) {
@@ -107,6 +109,21 @@ tr{
       }
     }
   }
+  $(document).ready(function() {
+    $("#restart").click(function(){
+      console.log("restart");
+      var r = confirm("Vuoi riavviare l' applicazione?");
+      if (confirm("Vuoi chiudere l'applicazione?")) {
+        window.location.reload();
+      }
+    });
+    $("#close").click(function(){
+      console.log("close");
+      if (confirm("Vuoi chiudere l'applicazione?")) {
+        navigator.app.exitApp();
+      }
+    });
+  });  
 </script>
 </body>
 </html>
